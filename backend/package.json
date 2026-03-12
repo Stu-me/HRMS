@@ -6,7 +6,9 @@
     "express-async-handler": "^1.2.0",
     "mongoose": "^9.3.0",
     "nodemon": "^3.1.14",
-    "router": "^2.2.0"
+    "router": "^2.2.0",
+    "uuid": "^13.0.0",
+    "zod": "^4.3.6"
   },
   "name": "backend",
   "version": "1.0.0",
