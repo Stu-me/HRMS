@@ -1,13 +1,17 @@
-import { useState } from 'react'
+import Employees from "./pages/Employees";
+import Attendance from "./pages/Attendance";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
 
   return (
-    <>
-      <div className='text-8xl m-1.5 caret-amber-600 bg-blue-300'>Hi there</div>
-    </>
-  )
-}
+    <div className="min-h-screen bg-gray-100">
 
-export default App
+      <Employees />
+
+      <div className="max-w-4xl mx-auto p-6">
+        <Attendance />
+      </div>
+
+    </div>
+  );
+}

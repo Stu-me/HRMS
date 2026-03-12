@@ -16,12 +16,19 @@ export default function Employees() {
   }, []);
 
   return (
-    <div>
-      <h1>Employees</h1>
+    <div className="max-w-4xl mx-auto p-6">
+
+      <h1 className="text-3xl font-bold mb-6">
+        Employees
+      </h1>
 
       <AddEmployeeForm reload={loadEmployees} />
 
-      <EmployeeTable employees={employees} reload={loadEmployees} />
+      <EmployeeTable
+        employees={employees}
+        reload={loadEmployees}
+      />
+
     </div>
   );
 }
