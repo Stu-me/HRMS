@@ -7,6 +7,6 @@ router.get('/',getAllEmployee);
 
 router.post('/',addEmployee);
 
-router.delete('/',deleteEmployee);
+router.delete('/:id',deleteEmployee);
 
 module.exports = router;

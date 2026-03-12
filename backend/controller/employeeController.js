@@ -1,7 +1,8 @@
 const asyncHandler = require('express-async-handler');
-const empolyeeSchema = require('../models/employeeModel');
+const Employee = require('../models/employeeModel');
 const employeeValidator = require('../middlewares/employeeValidation');
 const { v4: uuidv4 } = require('uuid');
+const {z} = require('zod')
 
 //@desc create new employee
 //@route POST /employee
@@ -10,7 +11,7 @@ const { v4: uuidv4 } = require('uuid');
  const addEmployee = asyncHandler(async(req,res)=>{
     const result = employeeValidator.parse(req.body);
 
-    const newEmployee = await empolyeeSchema.create({
+    const newEmployee = await Employee.create({
         employee_id: `EMP-${uuidv4()}`,  // ✅ server adds this
         full_name: req.body.full_name,
         email: req.body.email,
@@ -24,7 +25,8 @@ const { v4: uuidv4 } = require('uuid');
 //@access private
 
  const getAllEmployee = asyncHandler(async (req,res)=>{
-    res.send('all employee');
+    const employee = await Employee.find({}).select('employee_id full_name email department');
+    res.send(employee);
 })
 
 //@desc delete employee
@@ -32,7 +34,17 @@ const { v4: uuidv4 } = require('uuid');
 //@access private
 
  const deleteEmployee = asyncHandler(async (req,res)=>{
-    res.send('delete employee');
+    const eId = req.params.id;
+    const user = await Employee.findOne({employee_id:eId}).select('employee_id full_name email department');
+    if(!user){
+        res.status(404);
+        throw new Error("Invalid Id")
+    }
+    await Employee.findOneAndDelete({eId});
+    res.status(200).json({
+        message:"Employee removed",
+        deletedEmployee:user
+    });
 })
 
 module.exports = {getAllEmployee,addEmployee,deleteEmployee}
