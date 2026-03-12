@@ -13,7 +13,7 @@ app.use(express.json());
 // Routes
 app.use("/employee", require('./router/employeeRoutes'));
 
-// app.use("/attendance", require('./router/attendanceRoutes'));
+app.use("/attendance", require('./router/attendanceRoutes'));
 
 app.use(errorHandler);
 
