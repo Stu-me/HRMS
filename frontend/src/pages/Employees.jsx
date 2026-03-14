@@ -1,13 +1,12 @@
- import {use, useEffect ,useState } from 'react';
- import {getEmployees} from '../services/api';
- import EmployeeTable from '../components/EmployeeTable';
- import AddEmployeeForm from '../components/AddEmployeeForm'
-
+import { useEffect, useState } from 'react';
+import { getEmployees } from '../services/api';
+import EmployeeTable from '../components/EmployeeTable';
+import AddEmployeeForm from '../components/AddEmployeeForm';
+import AttendancePanel from '../components/AttendancePanel';
 
 export default function Employees() {
   const [employees, setEmployees] = useState([]);
-  const [showForm, setShowForm] = useState(false);
-  const [showAttendance, setShowAttendance] = useState(false);
+  const [activeView, setActiveView] = useState('employees'); // 'employees', 'add', or 'attendance'
 
   const loadEmployees = async () => {
     const res = await getEmployees();
@@ -18,50 +17,80 @@ export default function Employees() {
     loadEmployees();
   }, []);
 
+  // For demo: allow user to enter employeeId and see calendar for that ID
+  const [calendarEmployeeId, setCalendarEmployeeId] = useState("");
+
+  const renderContent = () => {
+    switch (activeView) {
+      case 'add':
+        return <AddEmployeeForm reload={() => { loadEmployees(); setActiveView('employees'); }} />;
+      case 'attendance':
+        return (
+          <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col md:flex-row gap-8">
+            <AttendancePanel
+              calendarEmployeeId={calendarEmployeeId}
+              setCalendarEmployeeId={setCalendarEmployeeId}
+            />
+          </div>
+        );
+      case 'employees':
+      default:
+        return (
+          <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+            <EmployeeTable employees={employees} reload={loadEmployees} />
+          </div>
+        );
+    }
+  };
+
   return (
-    <div className="flex min-h-screen bg-gray-50">
-      {/* Sidebar Dashboard */}
-      <aside className="w-1/4 min-w-[220px] max-w-xs bg-gradient-to-b from-[#23395d] to-[#406080] p-8 flex flex-col gap-8 shadow-lg">
-        <div>
-          <h2 className="text-2xl font-bold text-white mb-2 tracking-wide">HRMS Dashboard</h2>
-          <p className="text-blue-100 text-sm">Quick access to HR features</p>
-        </div>
-        <div className="flex flex-col gap-4">
+    <div className="flex min-h-screen bg-gray-100">
+      {/* Sidebar */}
+      <aside className="w-64 bg-white shadow-md flex flex-col p-6">
+        <h1 className="text-3xl font-bold text-indigo-600 mb-8">HRMS</h1>
+        <nav className="flex flex-col gap-4">
           <button
-            className="bg-white text-[#23395d] font-semibold py-2 rounded shadow hover:bg-blue-100 transition"
-            onClick={() => { setShowForm(true); setShowAttendance(false); }}
+            onClick={() => setActiveView('employees')}
+            className={`flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all duration-200 ${
+              activeView === 'employees' ? "bg-indigo-100 text-indigo-700" : "text-gray-500 hover:bg-gray-200"
+            }`}
+          >
+            View Employees
+          </button>
+          <button
+            onClick={() => setActiveView('add')}
+            className={`flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all duration-200 ${
+              activeView === 'add' ? "bg-indigo-100 text-indigo-700" : "text-gray-500 hover:bg-gray-200"
+            }`}
           >
             Add Employee
           </button>
           <button
-            className="bg-white text-[#23395d] font-semibold py-2 rounded shadow hover:bg-blue-100 transition"
-            onClick={() => { setShowAttendance(true); setShowForm(false); }}
+            onClick={() => setActiveView('attendance')}
+            className={`flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all duration-200 ${
+              activeView === 'attendance' ? "bg-indigo-100 text-indigo-700" : "text-gray-500 hover:bg-gray-200"
+            }`}
           >
-            Attendance
+            Mark Attendance
           </button>
-        </div>
+        </nav>
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 w-3/4 px-8 py-8">
-        <header className="bg-gradient-to-r from-[#23395d] to-[#406080] p-8 pb-6 rounded-xl mb-8 shadow-md text-left">
-          <h1 className="text-white text-4xl font-bold mb-2 tracking-wide drop-shadow">Employees</h1>
-          <p className="text-blue-100 text-lg font-normal tracking-wide">Below is the list of all employees. You can add, view, or manage employee information here.</p>
+      <main className="flex-1 p-8 bg-linear-to-br from-gray-50 to-gray-200">
+        <header className="mb-8">
+          <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight">
+            {activeView === 'employees' && 'Employee Directory'}
+            {activeView === 'add' && 'Add New Employee'}
+            {activeView === 'attendance' && 'Employee Attendance'}
+          </h1>
+          <p className="mt-2 text-lg text-gray-600">
+            {activeView === 'employees' && 'Browse and manage your team members.'}
+            {activeView === 'add' && 'Fill in the details to add a new employee.'}
+            {activeView === 'attendance' && 'Mark daily presence and absence for your team members.'}
+          </p>
         </header>
-        {showForm && (
-          <AddEmployeeForm reload={loadEmployees} />
-        )}
-        {showAttendance && (
-          <div className="bg-white shadow p-6 rounded mb-6 max-w-xl">
-            <h2 className="text-2xl font-semibold mb-4 text-[#23395d]">Attendance</h2>
-            {/* Inline AttendanceForm here if needed, or import and use */}
-            {/* <AttendanceForm /> */}
-            <p className="text-gray-500">Attendance form goes here.</p>
-          </div>
-        )}
-        {!showForm && !showAttendance && (
-          <EmployeeTable employees={employees} reload={loadEmployees} />
-        )}
+        {renderContent()}
       </main>
     </div>
   );
