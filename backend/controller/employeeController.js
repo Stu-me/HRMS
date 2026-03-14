@@ -2,7 +2,7 @@ const asyncHandler = require('express-async-handler');
 const Employee = require('../models/employeeModel');
 const employeeValidator = require('../middlewares/employeeValidation');
 const { v4: uuidv4 } = require('uuid');
-const {z} = require('zod')
+
 
 //@desc create new employee
 //@route POST /employee
