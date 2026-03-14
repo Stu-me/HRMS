@@ -33,7 +33,7 @@ export default function AddEmployeeForm({ reload }) {
   };
   return (
     <form onSubmit={handleSubmit} className="bg-white shadow p-4 rounded mb-6">
-      <h2 className="">Add Employee</h2>
+      <h2 className="p-2 text-3xl ">Add Employee</h2>
 
       <div className="grid grid-cols-2 gap-4"></div>
 
