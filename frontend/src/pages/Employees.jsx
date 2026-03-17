@@ -1,29 +1,25 @@
- import {use, useEffect ,useState } from 'react';
- import {getEmployees} from '../services/api';
- import EmployeeTable from '../components/EmployeeTable';
- import AddEmployeeForm from '../components/AddEmployeeForm'
+import { useEffect, useState } from 'react';
+import { getEmployees } from '../services/api';
+import EmployeeTable from '../components/EmployeeTable';
+import AddEmployeeForm from '../components/AddEmployeeForm';
 
+export default function Employees() {
+  const [employees, setEmployees] = useState([]);
 
- export default function Employees(){
-  const [employees,setEmployees] = useState([]) ; // state variable declated as empty variabble
-
-  const loadEmployees = async ()=>{// laod employee call the backend and update the employees
-    const res = await getEmployees();// calls backend 
+  const loadEmployees = async () => {
+    const res = await getEmployees();
     setEmployees(res.data);
   };
 
-  useEffect(()=>{ // render only once after the page starts 
-    loadEmployees()
-  },[]);
+  useEffect(() => {
+    loadEmployees();
+  }, []);
 
-   return (
-  <div>
-    <h1>Employees</h1>
-    <AddEmployeeForm reload={loadEmployees} />
-    <EmployeeTable
-      employees={employees}
-      reload={loadEmployees}
-    />
-  </div>
- )
- }
+  return (
+    <>
+      <h1 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1.5rem' }}>Employees</h1>
+      <AddEmployeeForm reload={loadEmployees} />
+      <EmployeeTable employees={employees} reload={loadEmployees} />
+    </>
+  );
+}
