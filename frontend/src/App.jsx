@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 // MainLayout provides the sidebar/dashboard and main content area
 import MainLayout from "./layout/MainLayout";
 // Page components for different routes
+import Home from "./pages/Home";
 import Employees from "./pages/Employees";
 import Attendance from "./pages/Attendance";
 
@@ -17,12 +18,14 @@ export default function App() {
       <MainLayout>
         {/* Define all routes for the app here */}
         <Routes>
+          {/* Home page route */}
+          <Route path="/" element={<Home />} />
           {/* Employees page route */}
           <Route path="/employees" element={<Employees />} />
           {/* Attendance page route */}
           <Route path="/attendance" element={<Attendance />} />
-          {/* Redirect any unknown route to Employees page */}
-          <Route path="*" element={<Navigate to="/employees" replace />} />
+          {/* Redirect any unknown route to Home page */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </MainLayout>
     </BrowserRouter>
