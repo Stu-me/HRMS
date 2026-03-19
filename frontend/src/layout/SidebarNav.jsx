@@ -1,6 +1,7 @@
 // SidebarNav.jsx - Navigation links for the sidebar
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import { COLORS, TRANSPARENCY } from "../constants/colors";
 
 // Simple SVG icons for sidebar
 const EmployeeIcon = () => (
@@ -28,12 +29,15 @@ function SidebarLink({ to, active, icon, children }) {
         gap: 10,
         padding: "0.75rem 1rem",
         borderRadius: 8,
-        color: active ? "#fff" : "#b3c6e0",
-        background: active ? "rgba(255,255,255,0.08)" : "none",
+        color: active ? COLORS.text.accent : "#b3c6e0",
+        background: active ? TRANSPARENCY.mediumWhite : "transparent",
+        backdropFilter: active ? 'blur(8px)' : 'none',
+        WebkitBackdropFilter: active ? 'blur(8px)' : 'none',
         fontWeight: active ? 700 : 500,
         textDecoration: "none",
         fontSize: 16,
-        transition: "background 0.2s, color 0.2s",
+        transition: "all 0.2s ease",
+        border: active ? `1px solid ${COLORS.border.glow}` : 'none',
       }}
     >
       {icon}

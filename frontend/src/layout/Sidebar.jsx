@@ -2,6 +2,7 @@ import React from "react";
 import SidebarBrand from "./SidebarBrand";
 import SidebarNav from "./SidebarNav";
 import SidebarFooter from "./SidebarFooter";
+import { COLORS, STYLES } from "../constants/colors";
 
 export default function Sidebar() {
   return (
@@ -9,12 +10,15 @@ export default function Sidebar() {
       style={{
         width: 240,
         minHeight: "100vh",
-        background: "linear-gradient(180deg, #1e2a3a 0%, #23395d 100%)",
+        background: COLORS.bg.sidebar,
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
         color: "white",
         display: "flex",
         flexDirection: "column",
         alignItems: "stretch",
-        boxShadow: "2px 0 8px rgba(0,0,0,0.07)",
+        boxShadow: `inset -1px 0 0 ${COLORS.border.glow}`,
+        borderRight: `1px solid ${COLORS.border.light}`,
         padding: "2.5rem 1.5rem 1.5rem 1.5rem",
       }}
     >

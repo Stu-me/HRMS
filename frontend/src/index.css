@@ -1,6 +1,200 @@
 @import "tailwindcss";
+
+/* Dark theme with blurred transparency */
 body, #root {
-  background: linear-gradient(135deg, #23272f 0%, #2d3748 100%);
+  background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
   min-height: 100vh;
-  color: #f3f4f6;
+  color: #f1f5f9;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 20, 25, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(96, 165, 250, 0.4);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(96, 165, 250, 0.6);
+}
+
+/* Consistent shadow patterns with standard transparency */
+:root {
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px 0 rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 24px 0 rgba(0, 0, 0, 0.16);
+  --shadow-xl: 0 12px 32px 0 rgba(0, 0, 0, 0.20);
+
+  /* Glassmorphic transparency layers */
+  --glass-blur: blur(10px);
+  --bg-glass: rgba(26, 31, 46, 0.7);
+  --bg-glass-light: rgba(45, 55, 72, 0.6);
+  --border-glass: rgba(96, 165, 250, 0.2);
+
+  --bg-subtle: rgba(255, 255, 255, 0.05);
+  --bg-soft: rgba(255, 255, 255, 0.08);
+  --bg-medium: rgba(255, 255, 255, 0.12);
+  --bg-strong: rgba(255, 255, 255, 0.18);
+}
+
+/* Glass effects for inputs and form elements */
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="password"],
+select,
+textarea {
+  background: rgba(15, 20, 25, 0.8) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(96, 165, 250, 0.15) !important;
+  color: #f1f5f9 !important;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="date"]::placeholder,
+textarea::placeholder {
+  color: rgba(203, 213, 225, 0.6);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+input[type="password"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: rgba(96, 165, 250, 0.4) !important;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+}
+
+/* Smooth transitions */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* React Calendar Styling */
+.react-calendar {
+  background: transparent;
+  border: none;
+  color: #f1f5f9;
+  font-family: inherit;
+}
+
+.react-calendar__navigation {
+  margin-bottom: 1rem;
+}
+
+.react-calendar__navigation button {
+  background: rgba(96, 165, 250, 0.1);
+  color: #f1f5f9;
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  border-radius: 6px;
+  padding: 0.5rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.react-calendar__navigation button:hover {
+  background: rgba(96, 165, 250, 0.2);
+  border-color: rgba(96, 165, 250, 0.4);
+}
+
+.react-calendar__month-view__days__day {
+  padding: 0.6rem 0;
+}
+
+.react-calendar__tile {
+  padding: 0.6rem;
+  background: transparent;
+  border-radius: 6px;
+  color: #f1f5f9;
+  transition: all 0.2s ease;
+}
+
+.react-calendar__tile:hover {
+  background: rgba(96, 165, 250, 0.15);
+}
+
+.react-calendar__tile--now {
+  background: rgba(96, 165, 250, 0.2);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+}
+
+.react-calendar__tile--active {
+  background: rgba(96, 165, 250, 0.3);
+  border: 1px solid rgba(96, 165, 250, 0.5);
+}
+
+/* Attendance status colors */
+.bg-green-200 {
+  background: rgba(16, 185, 129, 0.2) !important;
+  border: 1px solid rgba(16, 185, 129, 0.4) !important;
+  color: #10b981 !important;
+}
+
+.bg-red-200 {
+  background: rgba(239, 68, 68, 0.2) !important;
+  border: 1px solid rgba(239, 68, 68, 0.4) !important;
+  color: #ef4444 !important;
+}
+
+.bg-yellow-200 {
+  background: rgba(245, 158, 11, 0.2) !important;
+  border: 1px solid rgba(245, 158, 11, 0.4) !important;
+  color: #f59e0b !important;
+}
+
+.bg-blue-200 {
+  background: rgba(96, 165, 250, 0.2) !important;
+  border: 1px solid rgba(96, 165, 250, 0.4) !important;
+  color: #60a5fa !important;
+}
+
+.bg-purple-200 {
+  background: rgba(168, 85, 247, 0.2) !important;
+  border: 1px solid rgba(168, 85, 247, 0.4) !important;
+  color: #a855f7 !important;
+}
+
+.bg-gray-300 {
+  background: rgba(107, 114, 128, 0.2) !important;
+  border: 1px solid rgba(107, 114, 128, 0.4) !important;
+  color: #d1d5db !important;
+}
+
+.text-green-900 {
+  color: #10b981 !important;
+}
+
+.text-red-900 {
+  color: #ef4444 !important;
+}
+
+.text-yellow-900 {
+  color: #f59e0b !important;
+}
+
+.text-blue-900 {
+  color: #60a5fa !important;
+}
+
+.text-purple-900 {
+  color: #a855f7 !important;
+}
+
+.text-gray-700 {
+  color: #d1d5db !important;
 }
