@@ -27,6 +27,10 @@ app.use("/employee", require('./router/employeeRoutes'));
 
 app.use("/attendance", require('./router/attendanceRoutes'));
 
+app.get("/health",(req,res)=>{
+  res.status(200).json({status:"ok"});
+})
+
 app.use(errorHandler);
 
 app.listen(port, () => {
