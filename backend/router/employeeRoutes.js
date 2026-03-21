@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const {getAllEmployee,addEmployee,deleteEmployee} = require('../controller/employeeController')
+const {getAllEmployee,addEmployee,deleteEmployee ,routeChecker} = require('../controller/employeeController')
 
 router.get('/',getAllEmployee);
 

@@ -12,7 +12,7 @@ const { v4: uuidv4 } = require('uuid');
     const result = employeeValidator.parse(req.body);
 
     const newEmployee = await Employee.create({
-        employee_id: `EMP-${uuidv4()}`,  // ✅ server adds this
+        employee_id: req.body.employee_id,  // ✅ server adds this
         full_name: req.body.full_name,
         email: req.body.email,
         department: req.body.department
@@ -47,4 +47,11 @@ const { v4: uuidv4 } = require('uuid');
     });
 })
 
-module.exports = {getAllEmployee,addEmployee,deleteEmployee}
+ const routeChecker = asyncHandler(async(req,res)=>{
+    console.log("yes the router works");
+    res.status(200).json({
+        message:"done"
+    })
+ })
+
+module.exports = {getAllEmployee,addEmployee,deleteEmployee,routeChecker}
