@@ -36,7 +36,7 @@ export default function Home() {
       <section style={{ marginBottom: 32, background: 'rgba(255, 255, 255, 0.08)', backdropFilter: 'blur(10px)', borderRadius: 12, padding: '1.5rem', boxShadow: STYLES.shadowMd, border: `1px solid ${COLORS.border.glow}` }}>
         <h2 style={{ fontSize: '1.3rem', fontWeight: 'bold', marginBottom: 12, color: COLORS.text.accent }}>1. Employee Management</h2>
         <ul style={{ marginLeft: 24, marginBottom: 8, listStyle: 'disc', color: COLORS.text.secondary, fontSize: '1.08rem' }}>
-          <li style={{ marginBottom: 6 }}><span style={{ color: '#2563eb', fontWeight: 500 }}>Add</span> a new employee with <b>Employee ID (unique)</b>, <b>Full Name</b>, <b>Email Address</b>, and <b>Department</b></li>
+          <li style={{ marginBottom: 6 }}><span style={{ color: COLORS.text.accent, fontWeight: 500 }}>Add</span> a new employee with <b>Employee ID (unique)</b>, <b>Full Name</b>, <b>Email Address</b>, and <b>Department</b></li>
           <li style={{ marginBottom: 6 }}><span style={{ color: '#059669', fontWeight: 500 }}>View</span> a list of all employees</li>
           <li><span style={{ color: COLORS.status.error, fontWeight: 500 }}>Delete</span> an employee</li>
         </ul>
@@ -44,7 +44,7 @@ export default function Home() {
       <section style={{ background: 'rgba(255, 255, 255, 0.08)', backdropFilter: 'blur(10px)', borderRadius: 12, padding: '1.5rem', boxShadow: STYLES.shadowMd, border: `1px solid ${COLORS.border.glow}` }}>
         <h2 style={{ fontSize: '1.3rem', fontWeight: 'bold', marginBottom: 12, color: COLORS.text.accent }}>2. Attendance Management</h2>
         <ul style={{ marginLeft: 24, listStyle: 'disc', color: COLORS.text.secondary, fontSize: '1.08rem' }}>
-          <li style={{ marginBottom: 6 }}><span style={{ color: '#2563eb', fontWeight: 500 }}>Mark</span> attendance for an employee with <b>Date</b> and <b>Status (Present / Absent)</b></li>
+          <li style={{ marginBottom: 6 }}><span style={{ color: COLORS.text.accent, fontWeight: 500 }}>Mark</span> attendance for an employee with <b>Date</b> and <b>Status (Present / Absent)</b></li>
           <li><span style={{ color: '#059669', fontWeight: 500 }}>View</span> attendance records for each employee</li>
         </ul>
       </section>

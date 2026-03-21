@@ -12,7 +12,7 @@ export default function SidebarBrand() {
       }}
     >
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <rect width="32" height="32" rx="8" fill="#406080" />
+        <rect width="32" height="32" rx="8" fill="#3ea6ff" />
         <text
           x="16"
           y="22"

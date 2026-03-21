@@ -20,7 +20,7 @@ export default function EmployeeTable({employees , reload}){
     <div style={{ background: COLORS.bg.glass, backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', color: COLORS.text.primary, border: `2.5px solid ${COLORS.border.lighter}`, borderRadius: 12, boxShadow: STYLES.shadowLg, padding: '0rem', marginBottom: '1.5rem', overflowX: 'auto', overflow: 'hidden' }}>
       <table style={{ width: '100%', borderCollapse: 'collapse', background: 'transparent' }}>
         <thead>
-          <tr style={{ background: 'rgba(96, 165, 250, 0.08)', borderBottom: `2px solid ${COLORS.border.lighter}`, borderTop: `2px solid ${COLORS.border.lighter}` }}>
+          <tr style={{ background: 'rgba(62, 166, 255, 0.08)', borderBottom: `2px solid ${COLORS.border.lighter}`, borderTop: `2px solid ${COLORS.border.lighter}` }}>
             <th style={{ color: COLORS.text.accent, padding: '1rem 0.875rem', fontWeight: 700, textAlign: 'left', borderRight: `1px solid ${COLORS.border.light}` }}>ID</th>
             <th style={{ color: COLORS.text.accent, padding: '1rem 0.875rem', fontWeight: 700, textAlign: 'left', borderRight: `1px solid ${COLORS.border.light}` }}>Name</th>
             <th style={{ color: COLORS.text.accent, padding: '1rem 0.875rem', fontWeight: 700, textAlign: 'left', borderRight: `1px solid ${COLORS.border.light}` }}>Email</th>

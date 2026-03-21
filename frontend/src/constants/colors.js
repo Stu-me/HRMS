@@ -3,23 +3,23 @@
 export const COLORS = {
   // Primary backgrounds
   bg: {
-    dark: '#1a1f2e',
-    darker: '#0f1419',
-    darkGradient: 'linear-gradient(135deg, #1a1f2e 0%, #2d3748 100%)',
-    card: '#1e293b',
-    sidebar: 'linear-gradient(180deg, #0f1419 0%, #1a2543 100%)',
+    dark: '#0f111a',
+    darker: '#0b0f1a',
+    darkGradient: 'linear-gradient(135deg, #0f111a 0%, #141a2a 100%)',
+    card: '#151a24',
+    sidebar: 'linear-gradient(180deg, #0c1220 0%, #0e162b 50%, #0c1220 100%)',
     // Glassmorphic backgrounds with blur
-    glass: 'rgba(26, 31, 46, 0.7)',
-    glassLight: 'rgba(45, 55, 72, 0.6)',
+    glass: 'rgba(255, 255, 255, 0.08)',
+    glassLight: 'rgba(255, 255, 255, 0.12)',
   },
 
   // Text colors
   text: {
-    primary: '#f1f5f9',
-    secondary: '#cbd5e1',
-    muted: '#94a3b8',
-    accent: '#60a5fa',
-    accentLight: '#93c5fd',
+    primary: '#e7ecf3',
+    secondary: '#c2c8d5',
+    muted: '#9ca3b5',
+    accent: '#3ea6ff',
+    accentLight: '#7ed0ff',
   },
 
   // Status colors
@@ -27,14 +27,14 @@ export const COLORS = {
     success: '#10b981',
     error: '#ef4444',
     warning: '#f59e0b',
-    info: '#60a5fa',
+    info: '#3ea6ff',
   },
 
   // Borders
   border: {
-    light: '#334155',
-    lighter: '#475569',
-    glow: 'rgba(96, 165, 250, 0.2)',
+    light: '#1f2635',
+    lighter: '#273040',
+    glow: 'rgba(62, 166, 255, 0.28)',
   },
 };
 
@@ -89,7 +89,7 @@ export const STYLES = {
 
   // Form input style with blur
   inputGlass: {
-    background: 'rgba(15, 20, 25, 0.8)',
+    background: 'rgba(17, 22, 36, 0.9)',
     backdropFilter: 'blur(8px)',
     WebkitBackdropFilter: 'blur(8px)',
     color: COLORS.text.primary,

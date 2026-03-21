@@ -80,7 +80,7 @@ export default function EmployeeAttendanceCalendar({ employeeId }) {
       </div>
 
       {/* Attendance Summary Stats */}
-      <div style={{ background: 'rgba(96, 165, 250, 0.08)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: `2px solid ${COLORS.border.glow}`, borderRadius: 12, padding: '1.5rem' }}>
+      <div style={{ background: 'rgba(62, 166, 255, 0.08)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: `2px solid ${COLORS.border.glow}`, borderRadius: 12, padding: '1.5rem' }}>
         <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginBottom: 12, color: COLORS.text.accent }}>📊 Summary Stats</h3>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem' }}>
           <div style={{ textAlign: 'center' }}>

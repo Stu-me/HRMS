@@ -139,7 +139,7 @@ export default function Attendance() {
       <div style={{ width: '100%', maxWidth: '1200px' }}>
         <div
           style={{
-            background: 'rgba(96, 165, 250, 0.08)',
+            background: 'rgba(62, 166, 255, 0.08)',
             backdropFilter: 'blur(12px)',
             WebkitBackdropFilter: 'blur(12px)',
             border: `2px solid ${COLORS.border.glow}`,
